@@ -1,0 +1,348 @@
+---
+title           : "Effects of virtual reality training on boxing performance"
+<!-- plus précis : Effects of a virtual reality boxing training on boxing performance -->
+shorttitle      : "Preregistration - Evaluation study"
+date            : "`r Sys.setlocale('LC_TIME', 'C'); format(Sys.time(), '%d\\\\. %B %Y')`"
+author: 
+  - name        : Mildred Loiseau Taupin
+    affiliation : "1,2"
+  - name        : David Labbé
+    affiliation : "1"
+  - name        : Thomas Romeas
+    affiliation : "2,3"
+   
+affiliation:
+  - id          : 1
+    institution : Laboratoire de recherche en imagerie et orthopédie, Centre de recherche du Centre hospitalier de l’Université de Montréal, Montreal, QC, Canada. Corresponding author Mildred Loiseau Taupin, e-mail address mildred.taupin@etsmtl.ca
+  - id          : 2
+    institution : Institut national du sport du Québec, Montreal, QC, Canada
+  - id          : 3
+    institution : École d’Optométrie, Université de Montréal, Montreal, QC, Canada
+output: prereg::prereg_pdf
+editor_options: 
+  markdown: 
+    wrap: 72
+bibliography: references.bib
+---
+
+# Study information
+
+## Ethics
+
+This study was approved by the ethics committee of École de technologie
+supérieure (reference H20220103) and by Comité central d'éthique de la
+recherche du ministre de la Santé et des Services Sociaux (CCER 22-23 - 04)
+
+## Description
+
+Virtual reality training is considered to be a promising complementary
+training in sport, allowing to maintain the psycho-perceptual-motor
+fidelity of a task. However, its impact on performance factors such as
+anticipation and decision-making have not been studied extensively in
+sport, especially in boxing. The objective of this study is to measure
+the effects of virtual reality training on anticipation and
+decision-making skills in expert boxers.
+
+# Hypotheses
+
+## H1
+
+Our first hypothesis claims that technical and tactical performance will
+improve further in the virtual reality trained group.
+
+## H2
+
+Our second hypothesis supposes two different gaze behaviors depending on
+training. Indeed, our second hypothesis supposes that after a virtual
+reality training, visual search strategies will be more focal and less
+exploratory with a modification of the distribution between fixations
+and saccades compared to real training.
+
+# Design plan
+
+## Study type
+
+**Intervention experiment** - A researcher randomly assigns treatments
+to study subjects, this includes field experiments.
+
+## Blinding
+
+No blinding is involved in this study.
+
+## Study design
+
+A within-subject (paired), repeated measures design will be used with
+two factor with two levels: session (two sessions: pre- and
+post-training) ; training session (two groups: virtual or real
+training). One group of elite athletes (12 men ; 11 women) in boxing
+will be recruited (Tier 3 @mckay2022) For each participant, testing will
+take place on 18 different days: 2 field sessions and 16 training
+sessions.
+
+**Field Session.** Field sessions will be a boxing fight according to
+national boxing rules with adapted rules. The duration will be 3 rounds
+of 3 minutes with 1 minute rest between rounds against a real sparring
+partner. The boxing fight will be a technical sparring. For the
+opponent, this sparring will involve no punch at the head level for the
+integrity of the participant and the material. The opponent will be able
+to aim at all other parts of the body. The participant will fight without any other specific instructions but with the purpose of winning the fight. The opponent will be the same before and
+after training sessions for each participant and will not have
+participated in the study. Moreover, opponents will be different between
+participants for practical and technical reasons. During field sessions,
+participants will wear a binocular mobile eye-tracking (Glasses 3, Tobii
+Pro, Stockholm, Sweden). Calibration of the glasses will be done at the
+beginning of each session. Moreover, participants will wear a heart rate
+monitor and will be recorded with a camcorder during all field sessions.
+Participants will answer a perceived fatigue and a perceived exertion
+scales before and after each boxing fight [@micklewright2017]. At the
+beginning of each session, participants will also answer a short-form
+questionnaire about sleep quality, general muscle soreness, stress
+levels, mood [@mclean2010] and motivation. They will answer two
+questions about their sleep and caffeine consumption.
+
+**Training Session.** Virtual reality trained participants will
+experience a session of familiarization with the virtual reality boxing
+simulation. Sixteen training sessions will occur over eight weeks. Two
+different training conditions will be employed: virtual reality training
+or real training. Participants will be randomly assigned to one of the
+two conditions.
+
+Each virtual reality training session will consist in performing a
+virtual fight against a virtual opponent in the boxing simulation Thrill
+of the Fight (Sealost Interactive LLC, Knoxville, Tennessee,
+United-States). The duration will be 3 rounds of 3 minutes with 1 minute
+rest between rounds against a virtual opponent. This virtual opponent
+will be choose according the settings of the boxing simulation to be
+close to the level of each participant. These sessions will be held at
+local training gyms. During these training sessions, participants will
+wear a standalone head-mounted virtual reality (Meta Quest 2, Menlo
+Park, California, United-States). Calibration of the headset will be
+done at the beginning of each training session (size of the room).
+
+Each real training will be punch sequences against a punshing ball. The
+duration of sequences will be 3 series of 3 minutes with 1 minute rest
+between series, to reproduce duration and mean number of punches of a
+real fight. These sessions will occur at local training gyms.
+
+Before and after each training session (virtual reality or punshing
+ball), participants will answer a perceived fatigue scale
+[@micklewright2017] and a perceived exertion scale [@nakashima2017].
+During all training sessions, participants will wear an heart rate
+monitors to obtain physical activity parameters (duration, heart rate
+and calories). At the end of the last training session, participant
+involved in virtual reality training will answer a questionnaire about
+user experience in immersive virtual environments (VEQ,v2)
+[@tcha-tokey2016].
+
+## Randomization
+
+We will use block randomization, where each participant will be randomly
+assigned to one of the two training conditions. The random condition
+list used to create these two blocks of participants will be created
+using the web applications available at <http://random.org>. This block
+randomization method is designed to randomize subjects into groups that
+result in equal sample sizes. This method is used to ensure a balance in
+sample size (Consort-Statement \> Harms \> Randomisation: type, s. d.).
+
+# Sampling plan
+
+## Existing data
+
+Registration prior to creation of data: As of the date of submission of
+this research plan for preregistration, the data have not yet been
+collected, created, or realized.
+
+## Explanation of existing data
+
+N/A
+
+## Data collection procedures
+
+**Inclusion criteria :**
+
+-   Expertise level in boxing: Tier 3, Elite / International Level
+    [@mckay2022]
+
+-   Good visual acuity (eye exam \< 1 year)
+
+**Exclusion criteria :**
+
+-   Concussion in the last 3 months and athlete has not fully returned
+    to competition 
+
+-   Lens wearers
+
+-  Boxer has previously played the virtual reality Thrill of the Fight game for a sustained period of time
+
+We will recruit all elite participants in the provincial list of the
+boxing federation. This list will include 23 participants of 18 years
+and older. 
+
+## Sample size
+
+Sample size will correspond to the total number of participants (23) and
+the total number of stimuli , i.e., punches received.
+
+## Sample size rationale
+
+The number of participants depends on the boxing federation and level of
+participants. The number of stimuli will depend on each boxing fight in
+the two conditions (pre- and post-training).
+
+## Stopping rule
+
+N/A
+
+# Variables
+
+## Manipulated variables
+
+N/A
+
+## Measured variables
+
+**Gaze behavior.** We will measure gaze behavior with binocular mobile
+eye-tracking. We will record eye coordinates, pupil dilatations, point
+of fixation in the scene, data loss metric and gaze distance from the
+user camera to the point of fixation.
+
+**Fatigue and exertion indicators.** These indicators will be collected
+to verify that all conditions (field session, virtual reality training
+and real training) will give comparable physiological demands.
+
+-   Perceived fatigue: We will measure perceived fatigue by asking
+    participants: What is your perceived level of fatigue at this
+    moment, after this task? (on a scale of 0-10, 0 being 'not fatigued
+    at all', 10 'being totally fatigued, completely exhausted')
+    [@micklewright2017]
+
+-   Perceived exertion: We will measure perceived exertion by asking
+    participants: What is your perceived level of exertion at this
+    moment, after this task? (on a Borg scale of 6-20, 6 being 'no
+    exertion', 20 'maximal exertion') [@nakashima2017].
+
+-   Heart rate: Heart rate will be measured by heart rate monitor during
+    field sessions and training sessions (heart rate monitor in a belt
+    around the chest).
+
+**Motor behavior.** For each boxing fight, we will measure performance
+with rating scale validated and developed by the Institut national du
+sport du Québec. For each round, two evaluators will give information about
+technical and tactical performance factors (vulnerability, boxing
+stance, punch quality,...). Moreover, we will add four measures used in
+boxing by @lucy2021 : punches thrown by participants, shots scored by
+participants, punches thrown by opponents and shots scored by opponents.
+All these measures will be made a posteriori from video recordings.
+
+**State of mental and physical fitness**. All participants will answer
+the short-form questionnaire (sleep quality, general muscle soreness,
+stress levels, mood and motivation) on a scale of 1-5. For sleep
+quality, 1 being 'insomnia', 5 being 'very restful' ; for general muscle
+soreness, 1 being 'very sore', 5 being 'feeling great' ; for stress
+levels, 1 being 'highly stressed', 5 being 'very relaxed', for mood, 1
+being 'highly annoyed/irritable/down', 5 being 'very positive mood', and
+for motivation, 1 being 'no motivation', 5 being 'highly motivated'.
+They will give information about their sleep: hours of sleep during the
+last night and about their caffeine consumption: number of coffees
+before the experiment.
+
+**User experience**. A questionnaire to measure the user experience in
+immersive virtual environments will be used in virtual reality (VEQ,v2)
+[@tcha-tokey2016]. We will choose only 34 closed-questions including
+five subscales: presence, engagement, immersion, judgement and
+experience consequence. According to the wording of the question, a
+10-point Likert scale (1 being 'strongly disagree' and 10 being
+'strongly agree', or the opposite according the question) or a semantic
+differential scale (1 being a negatively-connoted adjective and 10 being
+a positively-connoted adjective) will be used.
+
+## Indices
+
+N/A
+
+# Analysis plan
+
+## Statistical models
+
+Gaze behavior recording measures will be used to obtain fixations
+(number, duration and rate, i.e., number of visual fixations made per
+second), saccades (number and amplitude), and search rate. We will use
+definitions proposed by @harris. Thus, fixation events will be defined
+as clusters of successive gaze point records within 1° of visual angle
+for \>100ms [@piras2011]. Saccades will be defined as portions of data
+where gaze acceleration (°/s2) exceed five times the median acceleration
+[@harris; @mann2019]. Saccade onset and offset times will be identified
+from acceleration minima and maxima [@harris]. Search rate will be
+calculated from the number of fixations divided by duration. This
+analysis will give information about visual strategy: low search rate
+(few long fixations) or high search rate (frequent and short
+fixations)[@harris].
+
+Motor behavior will be reported with performance (number for each
+technical and tactical factor, punches and shots).
+
+Perceived exertion and fatigue will give a number for each condition
+(pre-field session, post-field session and training session). Heart rate
+monitor will give a percent of maximal heart rate for each condition
+(pre-field session, post-field session and training session).
+
+Linear mixed models and Tukey post-hoc test will be performed to test
+our hypotheses. In all models, participants will be set as a random
+effect factor. To investigate the effects of training on gaze behavior
+and motor behavior, these variables will be set as dependent variables,
+and the experimental condition as a fixed effect factor. So, we will
+compare virtual reality training and real training conditions for each
+gaze behavior and motor behavior variables.
+
+## Inference criteria
+
+For all inferential analyses, significance was set at 5% (p\<.05). For
+all mixed linear models, we will obtain the model's total predictive
+power (i.e., conditional R2), the effect estimates and the 95%
+confidence intervals [@akl2016; @conte2020]. We will indicate the effect
+estimates using conditional R2. It will be interpreted as weak for
+values strictly less than 0.13; moderate for values between .13 and .26
+and important for values equal or more than .26 [@cohen1988]. For all
+significant mixed linear models, we will perform Tukey post-hoc tests to
+determine specific differences.
+
+## Data exclusion
+
+Outliers will be excluded in the analysis. For each variable, outliers
+will be determined with univariate anomaly detection [@planchon2005].
+This method is used to detect outliers that deviate from other
+observations [@everitt2002].
+
+## Missing data
+
+If a subject does not complete at least ten of the training sessions,
+that subject will be excluded in the analysis.
+
+## Exploratory analysis
+
+We plan to carry out an exploratory analysis on the VEQ-v2 to verify the
+psychological validity (presence, engagement, immersion, judgement and
+experience consequence) in the virtual environment training conditions.
+
+State of mental and physical fitness will be reported as descriptive
+data with mean of each scale or number.
+
+## Project schedule
+
+<!-- Provide the (estimated) start and end dates for this project. -->
+
+2022 - 2023
+
+## Templates
+
+DOI: <https://doi.org/10.31222/osf.io/epgjd>
+
+# References
+
+```{=tex}
+\vspace{-2pc}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{-1in}
+\setlength{\parskip}{8pt}
+\noindent
+```

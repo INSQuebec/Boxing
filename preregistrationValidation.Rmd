@@ -1,0 +1,355 @@
+---
+title           : "Visual strategies measurement in extended reality: assessments and recommendations"
+shorttitle      : "Preregistration - Validation study"
+date            : "`r Sys.setlocale('LC_TIME', 'C'); format(Sys.time(), '%d\\\\. %B %Y')`"
+author: 
+  - name        : Mildred Loiseau Taupin
+    affiliation : "1,2"
+  - name        : Thomas Romeas
+    affiliation : "2,3"
+  - name        : David Labbé
+    affiliation : "1"
+affiliation:
+  - id          : 1
+    institution : Laboratoire de recherche en imagerie et orthopédie, Centre de recherche du Centre hospitalier de l’Université de Montréal, Montreal, QC, Canada. Corresponding author Mildred Loiseau Taupin, e-mail address mildred.taupin@etsmtl.ca
+  - id          : 2
+    institution : Institut national du sport du Québec, Montreal, QC, Canada
+  - id          : 3
+    institution : École d’Optométrie, Université de Montréal, Montreal, QC, Canada
+output: prereg::prereg_pdf
+editor_options: 
+  markdown: 
+    wrap: 72
+bibliography: references.bib
+---
+
+# Study information
+
+## Ethics
+
+This study was approved by the ethics committee of École de technologie
+supérieure (reference H20220103) and by Comité central d'éthique de la
+recherche du ministre de la Santé et des Services Sociaux (CCER 22-23 -
+04)
+
+## Description
+
+Gaze behavior is an important determinant to understand expertise in
+sport. Currently, extended reality technologies have been utilized in
+high-performance to understand and train perceptual-motor skills. Extended reality technologies include eye trackers to record gaze behavior in more ecological conditions. However, their ecological validity in regards to gaze behavior is unkown. In this study, we want to know what viewing condition offers the best results on gaze
+behaviors compared to real world condition, in order to be able to
+choose the best suited viewing mode for perceptual-motor assessment and
+training. So we will measure gaze behavior in four environments (virtual reality, 360 virtual reality, 2D and real environment) to
+compare the effect of environments on gaze behaviors.
+
+# Hypotheses
+
+## H1
+
+Our first hypothesis supposes differences between visual strategies
+according to the environment like adaptive behavior. These differences
+would be eye movements (number of fixations or fixation durations) or most about ambient/focal visual attention
+(non-directional hypothesis). This hypothesis assumes that a virtual environment reflects the
+most realistic visual strategies (most similar to real world condition) compared to 360VR
+and 2D video.
+
+## H2
+
+Our second hypothesis supposes no differences in terms of performance between virtual environment and real environment.
+
+# Design plan
+
+## Study type
+
+**Observational Study** - Data is collected from study subjects that are
+not randomly assigned to a treatment. This includes surveys, "natural
+experiments" and regression discontinuity designs.
+
+## Blinding
+
+No blinding is involved in this study.
+
+## Study design
+
+A within-subject (paired), repeated measures design will be used with
+one factor (environment) with four levels : (i) virtual reality
+condition, (ii) 360° virtual reality condition, (iii) 2D video condition
+and (iv) real condition. One group of highly trained athletes (Tier 3,
+[@mckay2022]) in boxing will be recruited (15 men ; 15 women). For each participant,
+testing will take place on a single day. Counterbalancing between
+conditions will determine the order of the four conditions. All
+experimentations will take place at the Institut National du Sport du
+Québec.
+
+In the past, all participants already had a discovery session to
+extended reality (virtual reality and 360°VR). On arrival, participants
+will read an information sheet about the aims and designs of the study.
+Then, they will sign a written informed consent to participate in this
+study.
+
+Participants will answer a short-form questionnaire about fatigue, sleep
+quality, general muscle soreness, stress levels, mood [@mclean2010],
+motivation and familiarity with virtual reality. They will answer two
+questions about their sleep and caffeine consumption.
+
+An individualized warm-up will be conducted during 15 minutes with
+displacement and joint mobilizations. For each condition, participants
+will be virtually or really opposed to 24 punches from 4 different
+punches categories (jab, direct, hook and uppercut). Creation of these
+punches in extended reality and 2Dvideo corresponded in another
+preliminary study. Participants will give a motor response to avoid each
+punch .
+
+In all conditions, athletes will meet at least two different opponents
+(real or virtual). During virtual reality, 360° virtual reality and 2D
+video conditions, participants will wear a standalone head-mounted
+virtual reality (Neo 3 Pro Eye, Pico, Pico Immersive, San Francisco,
+United States). The Neo 3 Pro Eye includes a Tobii eye tracker with a
+90Hz sampling
+rate.
+Calibration of the headset will be done at the beginning of each
+condition. During real conditions, participants will wear a binocular
+mobile eye-tracking (Sampling rate: 100Hz, Glasses 3, Tobii Pro,
+Stockholm, Sweden). Calibration of the glasses will be done at the
+beginning of this condition. Moreover, opponents and participants will have two accelerometers in each glove. Participants will also have one accelerometer on their head and one on their trunk.
+
+During all the experimentation,
+participants will wear a heart rate monitor to measure task load and
+will be recorded with a camcorder.
+
+At the beginning and at the end of the experimentation, participants
+will verbally answer to a visual analogue scale about perceived fatigue
+ranging from 0 (no fatigue) to 10 (maximal fatigue and exhaustion)
+[@micklewright2017]. After each condition, participants will verbally
+answer to a perceived fatigue (2D video and real conditions) or will
+complete the simulation task load index (SIM-TLX) [@harris2020a] and the
+virtual environment questionnaire [@tcha-tokey2016] (virtual reality and
+360°VR conditions).
+
+## Randomization
+
+Observational study so it is not applicable between participants.
+
+# Sampling plan
+
+## Existing data
+
+Registration prior to creation of data: As of the date of submission of
+this research plan for preregistration, the data have not yet been
+collected, created, or realized.
+
+## Explanation of existing data
+
+N/A
+
+## Data collection procedures
+
+**Inclusion criteria :**
+
+-   Expertise level in boxing: Tier 3, Highly trained / National Level
+    [@mckay2022]
+
+-   Good visual acuity (eye exam \< 1 year)
+
+**Exclusion criteria :**
+
+-   Concussion in the last 3 months and athlete has not fully returned
+    to competition
+
+-   Lens wearer's
+
+We will recruit all sub-elite participants in the provincial list of the
+boxing federation. This list will include 30 participants between 15 and
+17 years old.
+
+## Sample size
+
+Sample size will corresponded to the total number of stimuli, i.e.,
+punches (n = 1920). This number is calculated with 24 punches for each
+of the 4 conditions for 30 participants.
+
+## Sample size rationale
+
+We conducted a power analysis for fully crossed design in mixed models
+using a Web-based application [@westfall2014]. Indeed, all participants
+and stimuli will be involved in each condition. This analysis took into
+account the number of participants and the number of stimuli. Our goal
+was to obtain .80 statistical power to detect a medium effect size of
+0.5 (analogous to Cohen's d) at the standard .05 alpha error
+probability. We added the number of participants (n=30). This number of
+participants depended on the inclusion criteria. The power analysis
+revealed that the minimum number of stimuli/punches per condition was
+24.4. According to the population recruited and the duration of the
+experimentation, we cannot propose more stimuli per condition than 24.
+
+## Stopping rule
+
+N/A
+
+# Variables
+
+## Manipulated variables
+
+First, we will manipulate the environment : four conditions of
+presentation (virtual reality, 360° virtual reality, 2D video and real
+conditions). Moreover, we will manipulate the punches presented in each
+condition. Twenty-four punches will be presented according to four
+categories: jab, direct, hook and uppercut. The presentation of the six punches per category will be randomized.
+
+## Measured variables
+
+**State of mental and physical fitness**. All participants will answer
+the short-form questionnaire (fatigue, sleep quality, general muscle
+soreness, stress levels, mood, motivation and familiarity with virtual
+reality) on a scale of 1-5. For fatigue, 1 being 'always tired', 5 being
+'very fresh' ; for sleep quality, 1 being 'insomnia', 5 being 'very
+restful' ; for general muscle soreness, 1 being 'very sore', 5 being
+'feeling great' ; for stress levels, 1 being 'highly stressed', 5 being
+'very relaxed', for mood, 1 being 'highly annoyed/irritable/down', 5
+being 'very positive mood', for motivation, 1 being 'no motivation', 5
+being 'highly motivated' and for familiarity, 1 being 'very familiar', 5
+being 'not familiar at all'. They will give information about their
+sleep: hours of sleep during the last night and about their caffeine
+consumption: number of coffees before the experiment.
+
+**Gaze behavior**. According to the condition, we will measure gaze
+behavior with standalone head-mounted virtual reality or binocular
+mobile eye-tracking both from Tobii (Tobii AB, Danderyd,
+Sweden). We will record eye coordinates,
+pupil dilatations, point of fixation in the scene, data loss metric and
+gaze distance from the user camera to the point of fixation.
+
+**Task load.**
+
+-   Perceived fatigue: We will measure perceived fatigue by asking
+    participants: What is your perceived fatigue at this moment, after
+    this task? (on a scale of 0-10, 0 being 'not fatigued at all', 10
+    'being totally fatigued, completely exhausted') [@micklewright2017]
+
+-   Simulation task load index (SIM-TLX): The SIM-TLX will measure task
+    demand. Participants will answer nine questions using a scale of
+    1-21 to assess the relative importance of nine factors in
+    determining how much workload was experienced (1 being 'low', 21
+    being 'high'). The nine factors are: mental demand, physical demand,
+    temporal demand, frustration, task complexity, situational stress,
+    situational stress, distractions, perceptual strain and task
+    control.
+
+-   Heart rate: Heart rate will be measured by heart rate monitor for
+    each condition.
+   
+**User experience**. Questionnaire to measure the user experience in
+immersive virtual environments will be used in virtual reality and
+360°VR conditions (VEQ,v2) [@tcha-tokey2016]. We will choose only 34
+closed-questions including five subscales: presence, engagement,
+immersion, judgement and experience consequence. According the question,
+a 10-point Likert scale (1 being 'strongly disagree' and 10 being
+'strongly agree', or the opposite according the question) or a semantic
+differential scale (1 being a negative-connoted adjective and 10 being a
+positive-connoted adjective) will be used.
+
+**Motor behavior**. In virtual reality, we will use the
+head-mounted virtual reality to register motor behavior. We will record
+coordinates of the head and the hands to obtain movement of the athlete.
+Moreover, we will record the same information for the avatar. In real world environment, accelerometers will record
+coordinates of the gloves, head and trunk to obtain movement of the opponent and the athlete. In virtual reality and in real world environment, we will code or record each athlete's ability to avoid the punch with a yes/no response to their action.
+
+## Indices
+
+N/A
+
+# Analysis plan
+
+## Statistical models
+Gaze behavior recording measures will be used to obtain fixations
+(number, duration and rate, i.e., number of visual fixations made per
+second). We will use the definition of fixation proposed by @harris.
+Thus, fixation events will be defined as clusters of successive gaze
+point records within 1° of visual angle for \>100ms [@piras2011].
+
+Motor behavior recording measures will be used to obtain two performance variables in virtual reality and real world conditions: reaction time and response accuracy. Reaction time will be the delay between initiation time of the opponent and initiation time of the athlete. Response accuracy will be the ability to avoid each punch.
+
+Linear mixed models and Tukey post-hoc test will be performed to test
+our hypotheses. In all models, participants will be set as a random
+effect factor. To test the hypothesis that fatigue will not be different
+during the experimental procedure, fatigue markers (perceived fatigue
+and heart rate) will be set as dependent variables and the different
+experimental conditions as fixed effect factors. To investigate the
+effects of environments on gaze behavior, gaze behavior variables will
+be set as dependent variables, and the experimental condition as a fixed
+effect factor. So, we will compare conditions for each gaze behavior
+variables. To investigate the effects of environments on performance, motor behavior variables will
+be set as dependent variables, and the experimental condition as a fixed
+effect factor. So, we will compare conditions for each motor behavior
+variables.
+
+## Inference criteria
+
+For all inferential analyses, significance will be set at 5% (p\<.05). For
+all mixed linear models, we will obtain the model's total predictive
+power (i.e., conditional R2), the effect estimates and the 95%
+confidence intervals [@akl2016; @conte2020]. We will indicate the effect
+estimates using conditional R2. It will be interpreted as weak for
+values strictly less than 0.13; moderate for values between .13 and .26
+and important for values equal or more than .26 [@cohen1988]. For all
+significant mixed linear models, we will perform Tukey post-hoc tests to
+determine specific differences.
+
+## Data exclusion
+
+Outliers will be excluded in the analysis. For each variable, outliers
+will be determined with univariate anomaly detection [@planchon2005].
+This method is used to detect outliers that deviate from other
+observations [@everitt2002].
+
+## Missing data
+
+If a subject does not complete one of the four conditions, that subject
+will still be included in the analysis.
+
+## Exploratory analysis
+
+Virtual environments could give metrics more accurate and usable than
+real world scenario. In the future, we could use gaze behavior
+recording mesures in the standalone head-mounted to obtain saccades
+(number and amplitude), and search rate. We will use the definition of
+saccades and search rate proposed by @harris. Thus, saccades will be
+defined as portions of data where gaze acceleration (°/s2) exceed five
+times the median acceleration [@harris; @mann2019]. Saccade onset and
+offset times will be identify from acceleration minima and maxima
+[@harris]. Search rate will be calculated from the number of fixations
+divided by duration. This analysis will give information about visual
+strategy: low search rate (few long fixations) or high search rate
+(frequent and short fixations)[@harris].
+
+We plan to carry out an exploratory analysis on the SIM-TLX to see if any of the variables will be low or high according to conditions (virtual reality or 360°VR).
+
+We plan to carry out an exploratory analysis on the VEQ-v2 to verify the variables (presence, engagement, immersion, judgement and experience consequence) in the virtual environment conditions (virtual reality or 360°VR).
+
+State of mental and physical fitness will be reported as descriptive data with mean of each scale or number.
+
+# Further comments
+
+## Preliminary study
+
+All punches presented in this study were recorded in a preliminary study with Insta360Pro (Shenzhen, China) and Lumix BGH1 (Panasonic, Kadoma, Japan) cameras. Then, all video were used and adapted according to conditions (virtual reality, 360°VR or 2D video) and code was created to record gaze behavior and motor behavior.
+
+## Project schedule
+
+<!-- Provide the (estimated) start and end dates for this project. -->
+
+2021 - 2023
+
+## Templates
+
+DOI: <https://doi.org/10.31222/osf.io/epgjd>
+
+# References
+
+```{=tex}
+\vspace{-2pc}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{-1in}
+\setlength{\parskip}{8pt}
+\noindent
+```
