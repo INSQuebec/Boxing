@@ -1,21 +1,27 @@
 ---
-title           : "My social psychology preregistration based on van 't Veer and Giner-Sorolla (2016) template"
-shorttitle      : "My preregistration"
+title           : "Study"
+shorttitle      : "Preregistration - Evaluation study"
 date            : "`r Sys.setlocale('LC_TIME', 'C'); format(Sys.time(), '%d\\\\. %B %Y')`"
-
 author: 
-  - name        : First Author
-    affiliation : 1
-  - name        : Ernst-August Doelle
+  - name        : Mildred Loiseau Taupin
     affiliation : "1,2"
-
+  - name        : David Labbé
+    affiliation : "1"
+  - name        : Thomas Romeas
+    affiliation : "2,3"
+   
 affiliation:
   - id          : 1
-    institution : Wilhelm-Wundt-University
+    institution : Laboratoire de recherche en imagerie et orthopédie, Centre de recherche du Centre hospitalier de l’Université de Montréal, Montreal, QC, Canada. Corresponding author Mildred Loiseau Taupin, e-mail address mildred.taupin@etsmtl.ca
   - id          : 2
-    institution : Konstanz Business School
-
+    institution : Institut national du sport du Québec, Montreal, QC, Canada
+  - id          : 3
+    institution : École d’Optométrie, Université de Montréal, Montreal, QC, Canada
 output: prereg::prereg_pdf
+editor_options: 
+  markdown: 
+    wrap: 72
+bibliography: references.bib
 ---
 
 # Hypotheses

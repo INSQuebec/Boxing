@@ -1,6 +1,5 @@
 ---
-title           : "Effects of virtual reality training on boxing performance"
-<!-- plus précis : Effects of a virtual reality boxing training on boxing performance -->
+title           : "Effects of a virtual reality boxing training on boxing performance"
 shorttitle      : "Preregistration - Evaluation study"
 date            : "`r Sys.setlocale('LC_TIME', 'C'); format(Sys.time(), '%d\\\\. %B %Y')`"
 author: 
