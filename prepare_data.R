@@ -4,3 +4,7 @@
 # to store the data.
 
 library(worcs)
+#private data
+open_data(data_code)
+
+

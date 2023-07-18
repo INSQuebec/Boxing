@@ -217,7 +217,7 @@ behavior with standalone head-mounted virtual reality or binocular
 mobile eye-tracking both from Tobii (Tobii AB, Danderyd,
 Sweden). We will record eye coordinates,
 pupil dilatations, point of fixation in the scene, data loss metric and
-gaze distance from the user camera to the point of fixation.
+gaze distance from the user camera to the point of fixation. <!--supprimer pupil dilatations -->
 
 **Task load.**
 

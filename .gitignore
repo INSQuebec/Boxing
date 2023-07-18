@@ -10,3 +10,8 @@
 *.log
 *.tex
 .Rproj.user
+dataout.csv
+!data.csv
+!codebook_data.csv
+!data_code.csv
+!codebook_data_code.csv

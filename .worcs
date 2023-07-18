@@ -1,3 +1,21 @@
 worcs_version: 0.1.10
 creator: MildredTaupin
 entry_point: manuscript/manuscript.Rmd
+data:
+  dataout.csv:
+    save_expression: write.csv(x = data, file = filename, row.names = FALSE)
+    load_expression: read.csv(file = filename, stringsAsFactors = TRUE)
+  data.csv:
+    save_expression: write.csv(x = data, file = filename, row.names = FALSE)
+    load_expression: read.csv(file = filename, stringsAsFactors = TRUE)
+    codebook: codebook_data.Rmd
+    labels: value_labels_data.yml
+  data_code.csv:
+    save_expression: write.csv(x = data, file = filename, row.names = FALSE)
+    load_expression: read.csv(file = filename, stringsAsFactors = TRUE)
+    codebook: codebook_data_code.Rmd
+    labels: value_labels_data_code.yml
+checksums:
+  dataout.csv: 91e55d34153b05515d8edc19779408b3
+  data.csv: dbd0d392af38d7d77da61bc6cece2f30
+  data_code.csv: 3ec095ac4a8c3d23fe4747f4558a1005

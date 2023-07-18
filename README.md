@@ -22,6 +22,7 @@ LICENSE                   | User permissions                 | Read only
 .worcs                    | WORCS metadata YAML              | Read only     
 preregistration.rmd       | Preregistered hypotheses         | Human editable
 prepare_data.R            | Script to process raw data       | Human editable
+code.R                    | Script to analyze data           | Human editable
 manuscript/manuscript.rmd | Source code for paper            | Human editable
 manuscript/references.bib | BibTex references for manuscript | Human editable
 renv.lock                 | Reproducible R environment       | Read only     
@@ -52,3 +53,19 @@ Please refer to the vignette on [reproducing a WORCS project]() for step by step
 <!-- If your project deviates from the steps outlined in the vignette on     -->
 <!-- reproducing a WORCS project, please provide your own advice for         -->
 <!-- readers here.                                                           -->
+
+## Access to data
+
+Some of the data used in this project are not publically available.
+To request access to the original data, [open a GitHub issue](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/creating-an-issue).
+
+<!--Clarify here how users should contact you to gain access to the data, or to submit syntax for evaluation on the original data.-->
+
+
+
+## Access to data
+
+Some of the data used in this project are not publically available.
+To request access to the original data, [open a GitHub issue](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/creating-an-issue).
+
+<!--Clarify here how users should contact you to gain access to the data, or to submit syntax for evaluation on the original data.-->

@@ -84,8 +84,7 @@ of 3 minutes with 1 minute rest between rounds against a real sparring
 partner. The boxing fight will be a technical sparring. For the
 opponent, this sparring will involve no punch at the head level for the
 integrity of the participant and the material. The opponent will be able
-to aim at all other parts of the body. The participant will fight without any other specific instructions but with the purpose of winning the fight. The opponent will be the same before and
-after training sessions for each participant and will not have
+to aim at all other parts of the body. The participant will fight without any other specific instructions but with the purpose of winning the fight. The opponent will be the same before and after training sessions for each participant and will not have
 participated in the study. Moreover, opponents will be different between
 participants for practical and technical reasons. During field sessions,
 participants will wear a binocular mobile eye-tracking (Glasses 3, Tobii
@@ -112,13 +111,16 @@ of the Fight (Sealost Interactive LLC, Knoxville, Tennessee,
 United-States). The duration will be 3 rounds of 3 minutes with 1 minute
 rest between rounds against a virtual opponent. This virtual opponent
 will be choose according the settings of the boxing simulation to be
-close to the level of each participant. These sessions will be held at
+close to the level of each participant. <!-- Modification à publier : The duration will be according each participant. The objective is to have a training intensity adapted to each athlete. Thus, in each training session, each athlete will have to do a maximum of two fights against two different opponents. These virtual opponents
+will be choose according the settings of the boxing simulation to be
+close to the level of each participant. --> 
+These sessions will be held at
 local training gyms. During these training sessions, participants will
 wear a standalone head-mounted virtual reality (Meta Quest 2, Menlo
 Park, California, United-States). Calibration of the headset will be
 done at the beginning of each training session (size of the room).
 
-Each real training will be punch sequences against a punshing ball. The
+Each real training will be punch sequences against a punching bag. The
 duration of sequences will be 3 series of 3 minutes with 1 minute rest
 between series, to reproduce duration and mean number of punches of a
 real fight. These sessions will occur at local training gyms.
