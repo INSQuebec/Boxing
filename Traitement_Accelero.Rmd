@@ -1,0 +1,472 @@
+---
+title: "Accelero"
+author: "DAUTELLE Mateo"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+### Informations diverses
+
+Chercheurs impliqués : Matéo Dautelle, Mildred Loiseau Taupin, Thomas Romeas et David Labbé
+
+Ce code sert à sortir le temps de réaction à chaque coup sur une tâche d'esquive en boxe anglaise. Les deux participants sont immobiles et possèdent des accéléromètres dans les bandes de chaque gant ainsi que sur la tête pour le participant qui esquive. Les données devront être téléchargées et mises dans le dossier "Data" de ce projet. Si vous avez lancé depuis le projet, il n'y a pas de working directory à paramétrer. 
+Il faut un dossier par participant. Aucun dossier ne doit être vide. Les fichiers devront ainsi être nommés : LH_Adversaire RH_Adversaire LH_Participant RH_Participant H_Participant (RH = Right Hand, LH = Left Hand, H = Head).
+
+Les seuils sont modifiables plus bas dans le code pour détecter les pics, cherchez la ligne de \##################################################################### pour savoir où elle se trouve. Il conviendra de lier ces seuils à une lecture graphique pour identifier les pics qui nous intéressent, et de peut-être bricoler un peu à la main.
+
+Le bloc de code "Paramètres Coups Supprimés" permet de supprimer les coups donnés en trop, dans leur ordre d'apparition. Se référer à ce bloc pour plus de détails. Cette partie du code n'est plus utilisée à date. En effet étant donné que des coups sont ajoutés lors que d'autres sont supprimés (car mal réalisés), les calculs ne fonctionnaient pas. La méthode actuelle consiste à donner le nombre de pics par participants (coups_totaux), à extraire le TR sur ces pics puis à posteriori,en dehors du code, supprimer les coups non valables. 
+
+Note importante : ce code fonctionne si une "synchronisation" manuelle, c'est à dire secouer tous les capteurs d'un coup assez fort, a été faite au début et à la fin de la prise de données. Le premier pic sera le temps 0 et le dernier la fin de l'enregistrement. S'il n'a pas été réalisé, la synchronisation des 5 capteurs est impossible.
+
+Code réalisé par Matéo Dautelle puis modifié et mis à jour par Mildred Loiseau Taupin
+
+Pour tout contact sur le projet : tromeas\@insquebec.org 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Installer automatiquement les packages si besoin
+packages <- c("here", "dplyr", "ggplot2", "plotly", "readxl")
+install.packages(packages[!packages %in% installed.packages()], dependencies = TRUE)
+
+# Packages
+library(here)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(readxl)
+```
+
+```{r Paramètres Coups Supprimés}
+# Supprimer des coups qui auraient été donnés en trop en indiquant leur ordre et la clé d'identification du boxeur. Mettre un 0 dans le cas où aucun coup n'est à supprimer.
+
+# Exemple de suppression des coups 25 à 28
+# BoxeE1P05 = c(25,26,27,28)
+
+# Définir les coups à supprimer pour chaque boxeur
+coups_supprimes <- list(
+  BoxeE1EP01 = c(0),
+  BoxeE1EP02 = c(6,23),
+  BoxeE1EP03 = c(25),
+  BoxeE1EP04 = c(22),
+  BoxeE1EP05 = c(9,19),
+  BoxeE1EP06 = c(24),
+  BoxeE1EP07 = c(8,10,19),
+  BoxeE1EP08 = c(26),
+  BoxeE1EP09 = c(0),
+  BoxeE1EP10 = c(0),
+  BoxeE1EP11 = c(25),
+  BoxeE1EP12 = c(5,10),
+  BoxeE1EP13 = c(0),
+  BoxeE1EP14 = c(0),
+  BoxeE1EP15 = c(14,16),
+  BoxeE1EP16 = c(13,22,23),
+  BoxeE1EP17 = c(14),
+  BoxeE1EP18 = c(8,23,26),
+  BoxeE1EP19 = c(0),
+  BoxeE1EP20 = c(0),
+  BoxeE1EP21 = c(0),
+  BoxeE1EP22 = c(19,26),
+  BoxeE1EP23 = c(0),
+  BoxeE1EP24 = c(0),
+  BoxeE1EP25 = c(25),
+  BoxeE1EP26 = c(0),
+  BoxeE1EP27 = c(0),
+  BoxeE1EP28 = c(0),
+  BoxeE1EP29 = c(17,25),
+  BoxeE1EP30 = c(14,25),
+  BoxeE1EP31 = c(9)
+)
+```
+
+```{r Paramètres Coups Totaux}
+# Indiquer le nombre de coups réalisés soient le nombre de pics d'accélération à considérer en indiquant le nombre et la clé d'identification du boxeur.
+
+# Définir le nombre de coups (familiarisation + testing) pour chaque boxeur
+coups_totaux <- list(
+  BoxeE1EP01 = c(27),
+  BoxeE1EP02 = c(31),
+  BoxeE1EP03 = c(28),
+  BoxeE1EP04 = c(31),
+  BoxeE1EP05 = c(31),
+  BoxeE1EP06 = c(28),
+  BoxeE1EP07 = c(33),
+  BoxeE1EP08 = c(30),
+  BoxeE1EP09 = c(30),
+  BoxeE1EP10 = c(27),
+  BoxeE1EP11 = c(37),
+  BoxeE1EP12 = c(30),
+  BoxeE1EP13 = c(27),
+  BoxeE1EP14 = c(27),
+  BoxeE1EP15 = c(30),
+  BoxeE1EP16 = c(32),
+  BoxeE1EP17 = c(29),
+  BoxeE1EP18 = c(33),
+  BoxeE1EP19 = c(27),
+  BoxeE1EP20 = c(36),
+  BoxeE1EP21 = c(30),
+  BoxeE1EP22 = c(35),
+  BoxeE1EP23 = c(29),
+  BoxeE1EP24 = c(27),
+  BoxeE1EP25 = c(32),
+  BoxeE1EP26 = c(30),
+  BoxeE1EP27 = c(28),
+  BoxeE1EP28 = c(27),
+  BoxeE1EP29 = c(34),
+  BoxeE1EP30 = c(30),
+  BoxeE1EP31 = c(32)
+)
+
+```
+
+```{r Import infos}
+
+# On récupère les infos
+current_dir <- getwd()
+sub_dir <- file.path(current_dir,"Data")
+setwd(sub_dir) 
+
+# Infos du boxeur --> Ici juste la clé d'identification mais possibilité d'ajouter des infos et de les insérer pour le tableau final (club, date passation, ... autre) au dataframe à partir de la ligne 290
+infos_boxeur <- read_excel("BoxeE1E_Infos.xlsx")
+# Ordre des coups
+ordre_coups <- read_excel("BoxeE1E_OrdreCoup.xlsx")
+```
+
+```{r Boucle for}
+
+# Initialisation
+sujet <- "BoxeE1EP"
+n <- nrow(infos_boxeur)
+TR_results <- data.frame()
+
+for (i in 1:n) {
+  sujet_complet <- paste0(sujet, sprintf("%02d", i))
+  
+  # Vérifier si le dossier existe
+  sub_dir <- file.path(current_dir, "Data", "Donnees", sujet_complet)
+  
+  if (dir.exists(sub_dir)) {
+  
+    # Définir le chemin d'accès
+    datapath <- sub_dir
+    setwd(datapath)
+    
+    # Récupérer la liste des fichiers csv à importer
+    files_names <- list.files(datapath)
+    #recuperer le nb de fichiers
+    nb_files <- length(files_names)
+    
+    # Creation d'une liste pour recevoir les sorties de la fn strsplit (nom des jeux de données) --> permet de voir le nombre de fichiers
+    data_names <- vector("list",length=nb_files)
+    
+    # Boucle for de récuperation de tous les jeux de données
+    for (j in 1 : nb_files) {
+            data_names[j] <- strsplit(files_names[j], split=".csv")
+    }
+    
+    # Assigner un nom aux objets --> à chaque jeu de donnees
+    for (j in 1:nb_files) {
+      file_path <- here(datapath, files_names[j])
+      lines <- readLines(file_path)
+      data <- read.csv(text = paste(lines[-(1:5)], collapse = "\n"), row.names = NULL)
+      assign(data_names[[j]], data)
+    }
+    
+    # Filtrer à la main les données
+    LH_Adversaire <- LH_Adversaire[-1, c("Time", "Accel.X", "Accel.Y", "Accel.Z")]
+    RH_Adversaire <- RH_Adversaire[-1, c("Time", "Accel.X", "Accel.Y", "Accel.Z")]
+    H_Participant <- H_Participant[-1, c("Time", "Accel.X", "Accel.Y", "Accel.Z")]
+    LH_Participant <- LH_Participant[-1, c("Time", "Accel.X", "Accel.Y", "Accel.Z")]
+    RH_Participant <- RH_Participant[-1, c("Time", "Accel.X", "Accel.Y", "Accel.Z")]
+    
+    # Soustraire 1 pour supprimer la gravité
+    LH_Adversaire$Accel.Z <- as.numeric(LH_Adversaire$Accel.Z) - 1
+    RH_Adversaire$Accel.Z <- as.numeric(RH_Adversaire$Accel.Z) - 1
+    H_Participant$Accel.Z <- as.numeric(H_Participant$Accel.Z) - 1
+    LH_Participant$Accel.Z <- as.numeric(LH_Participant$Accel.Z) - 1
+    RH_Participant$Accel.Z <- as.numeric(RH_Participant$Accel.Z) - 1
+    
+    # Rajouter la colonne de l'accélération absolue
+    LH_Adversaire <- LH_Adversaire |>
+      mutate(Accel = sqrt(as.numeric(Accel.X)^2 + as.numeric(Accel.Y)^2 + as.numeric(Accel.Z)^2))
+    RH_Adversaire <- RH_Adversaire |>
+      mutate(Accel = sqrt(as.numeric(Accel.X)^2 + as.numeric(Accel.Y)^2 + as.numeric(Accel.Z)^2))
+    H_Participant <- H_Participant |>
+      mutate(Accel = sqrt(as.numeric(Accel.X)^2 + as.numeric(Accel.Y)^2 + as.numeric(Accel.Z)^2))
+    LH_Participant <- LH_Participant |>
+      mutate(Accel = sqrt(as.numeric(Accel.X)^2 + as.numeric(Accel.Y)^2 + as.numeric(Accel.Z)^2))
+    RH_Participant <- RH_Participant |>
+      mutate(Accel = sqrt(as.numeric(Accel.X)^2 + as.numeric(Accel.Y)^2 + as.numeric(Accel.Z)^2))
+    
+    # Créer une liste contenant les noms des tableaux des données qu'on veut traiter
+    tableau_noms <- sapply(files_names, function(x) gsub("\\.csv$", "", x))
+    
+    # Initialiser un dataframe vide pour stocker les pics
+    pics_data <- data.frame(Tableau = character(), Pic = numeric(), Time = numeric())
+    
+    # Paramètres de détection des pics
+    seuil_temp <- 0.05 # Seuil de temps (durée minimale d'un pic en secondes)
+    lagging <- 1 # Le lag entre les lignes du tableau
+    refract <- 0.5 # Temps minimum entre deux pics (en secondes)
+    
+    # Boucle à travers chaque tableau
+    for (tableau_nom in tableau_noms) {
+      # Extraire les données du tableau
+      tableau <- get(tableau_nom)
+      tableau$Time <- as.numeric(tableau$Time)
+      
+      # Prendre la moyenne de l'accélération au repos
+      repos <- mean(tableau$Accel)
+      
+      ####################################################################
+      
+      # Ajuster le seuil d'accélération en fonction des noms de tableau
+      # Changer les valeurs selon les données obtenues lors des expériences
+      if (tableau_nom %in% c("RH_Adversaire", "LH_Adversaire")) {
+        seuil_accel <- 3
+      } else if (tableau_nom %in% c("H_Participant")) {
+        seuil_accel <- 1.25
+      } else if (tableau_nom %in% c("RH_Participant", "LH_Participant")) {
+        seuil_accel <- 1.25
+      }
+      
+      # Seuil d'accélération
+      threshold <- seuil_accel
+      
+      # Variables de contrôle
+      thres_on <- FALSE
+      timing_acc <- 0
+      acceleration <- 0
+      counting_acc <- 1
+      
+      # Parcourir les lignes du tableau
+      for (j in 1:nrow(tableau)) {
+        # Quand hors de la zone, on regarde si on y rentre
+        if (tableau$Accel[j] > threshold & thres_on == FALSE) {
+          thres_on <- TRUE
+          start_on <- j
+        } else {
+          # Si on y est déjà, on cherche quand on en sort
+          if (tableau$Accel[j] < threshold & thres_on == TRUE) {
+            thres_on <- FALSE
+            start_off <- j
+            # En sortie, on regarde la taille de la zone pour voir si on cherche le pic
+            if ((tableau$Time[start_off] - tableau$Time[start_on]) > seuil_temp) {
+              acceleration[counting_acc] <- tableau$Accel[start_on]
+              timing_acc[counting_acc] <- tableau$Time[which.max(tableau$Accel[start_on:start_off]) + start_on - 1]
+              counting_acc <- counting_acc + 1
+            }
+          }
+        }
+      }
+      
+      # Créer un dataframe temporaire pour stocker les pics, les temps et le tableau d'origine
+      temp_df <- data.frame(Tableau = rep(tableau_nom, length(timing_acc)), Pic = acceleration, Time = timing_acc)
+      
+      # Ajouter le dataframe temporaire à pics_data
+      pics_data <- rbind(pics_data, temp_df)
+    }
+    
+    # Filtrer les données en gardant uniquement la ligne avec le "Time" le plus petit dans le cas où l'écart entre les deux Time est inférieur au seuil déterminé. On garde aussi obligatoirement la première ligne qui est égale à 0
+    pics_data <- pics_data %>%
+      group_by(Tableau) %>%
+      arrange(Tableau, Time) %>%
+      mutate(Time_diff = c(0, diff(Time))) %>%
+      filter(Time_diff > refract | is.na(Time_diff) | Time_diff == 0) %>%
+      ungroup() %>%
+      select(-Time_diff)
+    
+    # Soustraire la valeur Time du pic d'initialisation à tous les autres du même capteur, on supprime le premier pic et le dernier qui sont l'initialisation et la fin, et on range en ordre croissant de Time
+    pics_data <- pics_data %>%
+      group_by(Tableau) %>%
+      mutate(Time = Time - min(Time)) %>%
+      filter(Time != max(Time) & Time != min(Time)) %>%
+      arrange(Time)
+    
+    # Création du tableau TR_temporary
+    TR_temporary <- data.frame()
+    
+    # Récupération des informations du sujet
+    sujet_info <- infos_boxeur[infos_boxeur$CleIdentification == sujet_complet, ]
+    
+    # Filtrage des lignes avec "LH_Adversaire" ou "RH_Adversaire"
+    adversaire_rows <- pics_data[pics_data$Tableau %in% c("LH_Adversaire", "RH_Adversaire"), ]
+    
+    # Vérifier si le boxeur et le coup actuels doivent être supprimés
+    #if (coups_supprimes[[sujet_complet]][1] != 0) {
+     #   rows_to_delete <- coups_supprimes[[sujet_complet]]
+      #  adversaire_rows <- adversaire_rows[-rows_to_delete, ]
+      #}
+    
+    #adversaire_rows$Série <- rep(c("A", "B", "C", "D", "E", "F", 1:27), length.out = nrow(adversaire_rows))
+    
+    # Parcours des lignes de pics_data avec "LH_Adversaire" ou "RH_Adversaire"
+    for (j in 1:nrow(adversaire_rows)) {
+      row <- adversaire_rows[j, ]
+      
+      # Récupération du temps de début
+      TpsDeb <- row$Time
+      
+      # Recherche de la première ligne correspondante dans "H_Participant", "LH_Participant", ou "RH_Participant"
+      participant_row <- pics_data[pics_data$Tableau %in% c("H_Participant", "LH_Participant", "RH_Participant") & (pics_data$Time - TpsDeb) < 1, ]
+      
+        # Vérification si une ligne a été trouvée
+      if (nrow(participant_row) > 0) {
+        # Filtrage des lignes avec un temps dans la plage spécifiée
+        valid_rows <- participant_row[participant_row$Time >= (TpsDeb - 1) & participant_row$Time <= (TpsDeb + 1), ]
+        
+        if (nrow(valid_rows) > 0) {
+          # Récupération du temps de fin le plus proche
+          #closest_time <- valid_rows$Time[which.min(abs(valid_rows$Time - TpsDeb))]
+          closest_time <- valid_rows$Time[which.min(valid_rows$Time)]
+          
+          # Calcul de TR
+          TR <- closest_time - TpsDeb
+          
+          # Récupération du lieu correspondant au temps de fin le plus proche
+          Lieu <- valid_rows$Tableau[valid_rows$Time == closest_time]
+        } else {
+          # Aucune ligne trouvée dans la plage spécifiée
+          TpsFin <- "None"
+          TR <- "None"
+          Lieu <- "None"
+          closest_time <- "None"
+        }
+      } else {
+        # Aucune ligne trouvée
+        TpsFin <- "None"
+        TR <- "None"
+        Lieu <- "None"
+        closest_time <- "None"
+      }
+      
+      
+      # Récupération de la valeur de la série
+      #serie <- row$Série
+      
+      # Recherche de la condition correspondante dans ordre_coups
+      #condition <- ifelse(serie %in% ordre_coups$Série, ordre_coups$Condition[match(serie, ordre_coups$Série)], "None")
+      
+      # Création de la ligne à ajouter à TR_temporary
+      new_row <- data.frame(
+        Participant = sujet_complet,
+        #Condition = condition,
+        #Série = serie,
+        TpsDeb = TpsDeb,
+        TpsFin = closest_time,
+        TR = TR,
+        Lieu = Lieu,
+        Pic = row$Pic  # Ajout de la colonne Pic
+      )
+      
+      # Ajout de la ligne à TR_temporary
+      TR_temporary <- rbind(TR_temporary, new_row)
+    }
+    # Ajouter les données à TR_results (ensemble des participants)
+    TR_results <- rbind(TR_results, TR_temporary)
+  }
+}
+
+
+#Selectionner dans TR_results uniquement les X pics les plus importants par participant, correspondant aux coups donnés par les participants (liste coups_totaux)
+# Convertir coups_totaux en dataframe pour faciliter le traitement
+coups_totaux_df <- data.frame(Participant = names(coups_totaux), Coups = unlist(coups_totaux), stringsAsFactors = FALSE)
+# Joindre les données de coups_totaux à TR_results
+TR_results <- merge(TR_results, coups_totaux_df, by = "Participant", all.x = TRUE)
+# Sélectionner les pics les plus importants par participant
+TR_results_filtered <- TR_results %>%
+  group_by(Participant) %>%
+  arrange(desc(Pic)) %>%
+  slice(1:first(Coups)) %>%
+  ungroup()
+```
+
+```{r Mise en forme finale}
+
+# Création du tableau ordre_coups_formate
+ordre_coups_formate <- data.frame(
+  #Condition = character(),
+  #Série = numeric(),
+  Participant = character(),
+  Coup = character(),
+  stringsAsFactors = FALSE
+)
+
+# Parcourir les colonnes du tableau ordre_coups
+for (col_index in 1:length(ordre_coups)) {
+  # Extraire le nom du participant de la clé d'identification de la colonne
+  participant <- colnames(ordre_coups)[col_index]
+  
+  # Parcourir les lignes du tableau ordre_coups
+  for (row_index in 1:nrow(ordre_coups)) {
+    # Extraire la condition et la série correspondantes
+    #condition <- ordre_coups[row_index, "Condition"]
+    #serie <- ordre_coups[row_index, "Série"]
+    
+    # Extraire le coup correspondant à la colonne
+    coup <- ordre_coups[row_index, col_index]
+    
+    # Ajouter une nouvelle ligne au tableau ordre_coups_formate
+    #ordre_coups_formate[nrow(ordre_coups_formate) + 1, ] <- c(condition, serie, participant, coup)
+    ordre_coups_formate[nrow(ordre_coups_formate) + 1, ] <- c(participant, coup)
+  }
+}
+
+
+# Enregister le tableau ordre_coups_formate dans le workspace en créant un dossier Results
+# Nom du dossier à créer
+Results <- "Results"
+# Chemin complet du dossier dans le répertoire de travail actuel
+chemin_complet <- file.path(getwd(), Results)
+# Créer le dossier dans le répertoire de travail actuel
+dir.create(chemin_complet)
+library(openxlsx)
+# Spécifiez le nom du fichier
+nom_fichier <- "OrdreCoup.xlsx"
+# Combiner le chemin du répertoire de travail avec le nom du fichier pour obtenir le chemin complet
+chemin_complet_results <- file.path(chemin_complet, nom_fichier)
+# Enregistrez les données au format Excel avec un nom de fichier spécifié
+write.xlsx(ordre_coups_formate, chemin_complet_results)
+
+
+# Utilisation de la fonction merge pour fusionner les deux tableaux
+#TR_final <- merge(TR_results, ordre_coups_formate,
+                  #by = c("Participant", "Série", "Condition"),
+                  #all.x = TRUE)
+#TR_final$Coup <- gsub("Familiarisation", "F", TR_final$Coup)
+#TR_final$Coup <- gsub("Jab", "J", TR_final$Coup)
+#TR_final$Coup <- gsub("Uppercut", "U", TR_final$Coup)
+#TR_final$Coup <- gsub("Crochet", "C", TR_final$Coup)
+#TR_final$Coup <- gsub("Direct", "D", TR_final$Coup)
+
+TR_final <- TR_results_filtered %>% arrange(Participant,TpsDeb)
+
+# Création de la colonne imputée. Le temps d'1s est choisi
+TR_final$TR_impute <- TR_final$TR
+TR_final$TR_impute <- ifelse(TR_final$TR_impute == "None", 1, TR_final$TR_impute)
+
+#Supprimer les colonnes inutiles : Pics, Coups et TR
+TR_final <- TR_final %>%
+    select (-Pic, -Coups, -TR_impute)
+```
+
+```{r Fin}
+
+# Affichage du tableau TR_final
+View(TR_final)
+
+# Enregister le tableau TR_final dans le workspace en créant un dossier Results
+# Nom du dossier à créer
+Results <- "Results"
+# Chemin complet du dossier dans le répertoire de travail actuel
+chemin_complet <- file.path(getwd(), Results)
+# Créer le dossier dans le répertoire de travail actuel
+dir.create(chemin_complet)
+library(openxlsx)
+# Spécifiez le nom du fichier
+nom_fichier <- "TR.xlsx"
+# Combiner le chemin du répertoire de travail avec le nom du fichier pour obtenir le chemin complet
+chemin_complet_results <- file.path(chemin_complet, nom_fichier)
+# Enregistrez les données au format Excel avec un nom de fichier spécifié
+write.xlsx(TR_final, chemin_complet_results)
+```
